@@ -4,6 +4,8 @@
 // font-family: 'Roboto Condensed', sans-serif;
 // font-family: 'Roboto Mono', monospace;
 
+$p-color: #F4F2F0;
+$s-color: #666666;
 
 // Body
 body, html{
@@ -16,8 +18,9 @@ body, html{
 }
 
 .header{
-  background-color: #F4F2F0;
+  background-color: $p-color;
 
+  position: static;
   display: flex;
   align-items: center;
 
@@ -29,13 +32,14 @@ body, html{
 // Header Title(Left)
 .header-title{
   min-width: 10%;
+
   padding-left: 2em;
 }
 .header-title>h1{
   margin: 0;
 
   text-transform: uppercase;
-  color: #666666;
+  color: $s-color;
 
   font-weight: lighter;
   font-size: 1.3em;
@@ -50,22 +54,12 @@ body, html{
   font-size: 1em;
   font-family: 'Roboto Condensed', sans-serif;
 }
-// Header Social(Middle)
-.header-social{
-  min-width: 75%;
 
-  display: flex;
-  justify-content: center;
-}
-
-.header-social>a>img{
-  margin-left: 1em;
-}
 // Header Menu(Right)
 .header-menu{
   min-width: auto;
 
-  display: inline;
+  margin-left: auto;
   justify-content: center;
 }
 .header-menu>ul{
@@ -73,11 +67,43 @@ body, html{
 }
 .header-menu>ul>a{
   text-decoration: none;
-  color: #666666;
+  color: $s-color;
 }
 .header-menu>ul>a>li{
   list-style: none;
 
   display: inline;
   padding: 0 2em 0 0;
+}
+
+// Header title
+.header-content{
+  color: $s-color;
+  text-transform: uppercase;
+  font-family: 'Roboto Mono', monospace;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Content
+.content-date{
+  color: $s-color;
+  text-transform: uppercase;
+  font-family: 'Roboto Mono', monospace;
+
+  display: flex;
+  justify-content: left;
+}
+.content-title{
+  margin-bottom: .5em;
+  color: black;
+  font-family: 'Roboto', sans-serif;
+
+  display: flex;
+  justify-content: left;
+}
+.content-summary{
+  color: $s-color;
 }
