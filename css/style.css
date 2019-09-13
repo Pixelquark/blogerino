@@ -129,6 +129,7 @@ body, html {
 
 .header-menu > ul > li {
   list-style: none;
+  cursor: pointer;
   display: inline;
   margin-right: 2em; }
 
@@ -139,18 +140,6 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center; }
-
-.nav-social {
-  margin: 0em 0em 3em auto;
-  padding: 0 1.8em 0 0;
-  min-height: 34px; }
-
-.nav-social > a {
-  text-decoration: none; }
-
-.social-icon {
-  max-height: 25px;
-  max-width: 25px; }
 
 .post-header {
   margin-bottom: 1em; }

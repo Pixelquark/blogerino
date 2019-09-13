@@ -1,5 +1,7 @@
 $("#navmenu").hide();
+$(".post-container").hide();
 $(".header, .nav-social").addClass("animated fadeInDown");
+$(".post-container").delay(1000).fadeIn(400);
 
 
 
@@ -14,7 +16,5 @@ $("#menu").click(function(){
   }else{
     $("#menu").toggleClass("rotate-center");
     $("#navmenu").toggleClass("slide-out-left");
-    // $("#navmenu").fadeOut(400);
-
   }
 });

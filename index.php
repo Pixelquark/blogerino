@@ -34,35 +34,16 @@
     </ul>
     <ul>
       <li>
-        <a href="#">
           <img id="menu" src="assets/menu.png" alt="">
-        </a>
       </li>
     </ul>
   </div>
 
 </div>
 
-<!-- ===== NAV SOCIAL START ===== -->
-<!-- <div class="d-flex p-2 bd-highlight">
-<div class="nav-social">
-    <a href="">
-      <img class="social-icon" src="assets/twitter.svg" alt="">
-    </a>
-
-    <a href="">
-      <img class="social-icon" src="assets/github.svg" alt="">
-    </a>
-
-    <a href="">
-      <img class="social-icon" src="assets/rss.svg" alt="">
-    </a>
-
-</div>
-</div> -->
 
 <!-- ===== CONTENT START ===== -->
-<div class="container">
+<div class="container post-container">
   <div class="row">
 
       <!-- == CONTENT HEADER == -->
