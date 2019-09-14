@@ -10,6 +10,8 @@
   <meta name="author" content="Erik Morelli">
   <meta name="description" content="Practicing CMS development with a simple blog">
 
+  <link rel="icon" type="image/png" href="favicon.png">
+
   <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/bootstrap.min.css.map">
@@ -45,38 +47,41 @@
 <!-- ===== CONTENT START ===== -->
 <div class="container post-container">
   <div class="row">
-
       <!-- == CONTENT HEADER == -->
       <div class="col-lg-12">
         <div class="header-content">
-          <span>Recent Articles</span>
+          <span>Portfolio</span>
         </div><hr>
       </div>
+  </div>
 
-      <!-- == POST START == -->
-      <div class="col-lg-12">
-        <div class="post-header">
-          <span class="content-date"><i>September 11, 2019</i></span>
-          <h2 class="content-title">This is the title of the post, succint introduction to subject.</h2>
-        </div>
-      <!-- == POST CONTENT == -->
-        <div class="content-post">
-          <p class="content-summary">
-            Fusce tempus consequat lorem, at iaculis risus vestibulum quis. Phasellus quis efficitur lectus, in dignissim ligula.
-            Maecenas finibus leo quis iaculis dapibus. Proin nec nisl ac ante congue accumsan vel suscipit mi. Vestibulum ac tempor libero.
-            Morbi sit amet elit odio. Nulla ut pretium nulla.<br><br>
-            Fusce tempus consequat lorem, at iaculis risus vestibulum quis. Phasellus quis efficitur lectus, in dignissim ligula.
-            Maecenas finibus leo quis iaculis dapibus.
-          </p>
-        </div>
+  <div class="row panel-container">
+    <div class="col-lg-4 panel">
+      <img class="card-preview" src="assets/webapp2.png" alt="">
 
-      <!-- == CONTENT NAVIGATION == -->
-        <div class="content-nav">
-          <button class="button-read" type="button" name="button">Read more</button>
-          <button class="button-git" type="button" name="button">See in Github</button>
-          <img class="button-report" src="assets/report.png" alt="Report a bug">
-        </div><br>
+      <div class="buttons">
+        <button type="button" class="btn btn-secondary btn-sm">See Demo</button>
+        <button type="button" class="btn btn-secondary btn-sm">See Github</button>
       </div>
+    </div>
+
+    <div class="col-lg-4 panel">
+      <img class="card-preview" src="assets/webapp.jpg" alt="">
+
+      <div class="buttons">
+        <button type="button" class="btn btn-secondary btn-sm">See Demo</button>
+        <button type="button" class="btn btn-secondary btn-sm">See Github</button>
+      </div>
+    </div>
+
+    <div class="col-lg-4 panel">
+      <img class="card-preview" src="assets/webapp3.png" alt="">
+
+      <div class="buttons">
+        <button type="button" class="btn btn-secondary btn-sm">See Demo</button>
+        <button type="button" class="btn btn-secondary btn-sm">See Github</button>
+      </div>
+    </div>
 
   </div>
 </div>
