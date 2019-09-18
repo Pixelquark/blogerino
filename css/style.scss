@@ -13,6 +13,7 @@ body, html{
 
   font-family: 'Roboto', sans-serif;
 
+  min-width: 350px;
   margin: 0;
   padding: 0;
 }
@@ -143,6 +144,8 @@ body, html{
   margin: 0;
   padding: 0;
 
+  min-width: 200px;
+
   color: $s-color;
 
   font-size: 1em;
@@ -151,6 +154,9 @@ body, html{
 #menu{
   max-height: 34px;
   max-width: 34px;
+}
+#navmenu{
+  display: inline;
 }
 
 // Header Menu(Right)
@@ -168,6 +174,7 @@ body, html{
   margin: 0;
   padding: 0;
 }
+
 .header-menu>ul>li>a{
   text-decoration: none;
   color: $s-color;
@@ -197,7 +204,7 @@ body, html{
 }
 .panel{
   margin: .5em;
-  padding: 0 0 1em 0;
+  padding: 0;
   max-width: 350px;
   max-height: auto;
 
@@ -210,13 +217,22 @@ body, html{
   background-color: $bg-color;
 }
 .btn{
-  min-width: 85px;
+  min-width: 174px;
   align-self: flex-end;
   background-color: $s-color;
   border-color: $s-color;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
-.buttons{
+.btn-left{
+  border-bottom-right-radius: 0px;
+}
+.btn-right{
+  border-bottom-left-radius: 0px;
+}
 
+.buttons{
+  display: flex;
   margin: 0;
 
 }
@@ -224,10 +240,18 @@ body, html{
   width: inherit;
   height: 350px;
 
-  margin-bottom: 1em;
   filter: saturate(80%);
 }
 
 .card-preview:hover{
 
+}
+
+@media(max-width:550px){
+  .header-title>h1{
+    font-size: .9em;
+  }
+  .header-title>p{
+    font-size: .9em;
+  }
 }

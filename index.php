@@ -60,8 +60,8 @@
       <img class="card-preview" src="assets/webapp2.png" alt="">
 
       <div class="buttons">
-        <button type="button" class="btn btn-secondary btn-sm">See Demo</button>
-        <button type="button" class="btn btn-secondary btn-sm">See Github</button>
+        <button type="button" class="btn btn-left btn-secondary btn-sm">See Demo</button>
+        <button type="button" class="btn btn-right btn-secondary btn-sm">See Github</button>
       </div>
     </div>
 
@@ -69,8 +69,8 @@
       <img class="card-preview" src="assets/webapp.jpg" alt="">
 
       <div class="buttons">
-        <button type="button" class="btn btn-secondary btn-sm">See Demo</button>
-        <button type="button" class="btn btn-secondary btn-sm">See Github</button>
+        <button type="button" class="btn btn-left btn-secondary btn-sm">See Demo</button>
+        <button type="button" class="btn btn-right btn-secondary btn-sm">See Github</button>
       </div>
     </div>
 
@@ -78,8 +78,8 @@
       <img class="card-preview" src="assets/webapp3.png" alt="">
 
       <div class="buttons">
-        <button type="button" class="btn btn-secondary btn-sm">See Demo</button>
-        <button type="button" class="btn btn-secondary btn-sm">See Github</button>
+        <button type="button" class="btn btn-left btn-secondary btn-sm">See Demo</button>
+        <button type="button" class="btn btn-right btn-secondary btn-sm">See Github</button>
       </div>
     </div>
 
