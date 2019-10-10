@@ -1,6 +1,7 @@
 body, html {
   background-color: #FFFFFF;
   font-family: 'Roboto', sans-serif;
+  width: 100%;
   min-width: 350px;
   margin: 0;
   padding: 0; }
@@ -72,7 +73,8 @@ body, html {
  * Licensed under FreeBSD License.
  * See http://animista.net/license for more info.
  * w: http://animista.net, t: @cssanimista
- * ---------------------------------------------- */
+ * ----------------------------------------------
+ */
 .container {
   padding: 2em 1em 2em 1em; }
 
@@ -149,34 +151,40 @@ body, html {
   padding: 0;
   max-width: 350px;
   max-height: auto;
-  display: block;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   text-align: center;
   border: 1px solid #CECECE;
   border-radius: 6px;
   background-color: #f5f5f5; }
 
-.btn {
+.btn, form {
   min-width: 174px;
   align-self: flex-end;
   background-color: #575757;
   border-color: #575757;
+  border-radius: 6px;
   border-top-right-radius: 0;
-  border-top-left-radius: 0; }
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  cursor: pointer; }
+
+.btn:focus, .btn:active, .btn:visited {
+  box-shadow: none; }
 
 .btn-left {
-  border-bottom-right-radius: 0px; }
+  border-bottom-right-radius: 0px;
+  border-right: 1px solid #575757; }
 
 .btn-right {
-  border-bottom-left-radius: 0px; }
+  border-bottom-left-radius: 0px;
+  border-left: 1px solid #575757; }
 
 .buttons {
   display: flex;
   margin: 0; }
-
-.card-preview {
-  width: inherit;
-  height: 350px;
-  filter: saturate(80%); }
 
 @media (max-width: 550px) {
   .header-title > h1 {
@@ -184,5 +192,35 @@ body, html {
 
   .header-title > p {
     font-size: .9em; } }
+.imgcontainer {
+  min-height: 350px;
+  min-width: 350px;
+  display: flex; }
+
+.cardpreview {
+  max-height: 348px;
+  width: 348px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px; }
+
+.linkbutton {
+  text-decoration: none;
+  color: #CECECE; }
+
+.linkbutton:hover {
+  text-decoration: none;
+  color: #CECECE; }
+
+.cardinfo {
+  min-height: 348px;
+  width: 348px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center; }
+
+.wrapper {
+  display: flex;
+  flex-direction: column; }
 
 /*# sourceMappingURL=style.css.map */

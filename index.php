@@ -1,94 +1,127 @@
-<!DOCTYPE html>
+<?php
+require __DIR__.'/includes/post.php';
+require __DIR__.'/includes/connection.php';
 
+$post = new Post;
+$posts = $post->fetch_all();
+
+
+?>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
 
-  <title>Pixel Quark</title>
+  <title>Pixelquark</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Erik Morelli">
-  <meta name="description" content="Practicing CMS development with a simple blog">
+  <meta name="description" content="Webdeveloper with big ambitions and a minimalistic approach">
 
   <link rel="icon" type="image/png" href="favicon.png">
 
   <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/bootstrap.min.css.map">
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css.map"> -->
   <link rel="stylesheet" href="css/animate.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+<div class="wrapper">
 
-<!-- ===== HEADER ===== -->
+
+<!-- ======================== -->
+<!-- ===== Header Start ===== -->
+<!-- ======================== -->
+
 <div class="header">
-  <!-- == HEADER LOGO == -->
+
+  <!-- == Header Logo == -->
   <div class="header-title animated">
     <h1>Erik Morelli</h1>
     <p>Webdeveloper @ Pixelquark</p>
   </div>
-  <!-- == HEADER MENU == -->
+
+  <!-- == Header menu == -->
   <div class="header-menu">
+
+    <!-- == Links == -->
     <ul id="navmenu">
       <li><a href="">Webapps</a></li>
-      <li><a href="">Github</a></li>
+      <li><a href="https://github.com/Pixelquark">Github</a></li>
     </ul>
-    <ul>
-      <li>
-          <img id="menu" src="assets/menu.png" alt="">
-      </li>
-    </ul>
+
+    <!-- Menu hamburguer -->
+    <ul><li><img id="menu" src="assets/menu.png" alt=""></li></ul>
+
   </div>
 
 </div>
 
 
-<!-- ===== CONTENT START ===== -->
+<!-- ========================= -->
+<!-- ===== Content Start ===== -->
+<!-- ========================= -->
+
+<!-- == Main Container == -->
 <div class="container post-container">
+
+  <!-- == Content Header == -->
   <div class="row">
-      <!-- == CONTENT HEADER == -->
       <div class="col-lg-12">
         <div class="header-content">
           <span>Portfolio</span>
         </div><hr>
       </div>
   </div>
-
+  <!-- == Content Main == -->
   <div class="row panel-container">
-    <div class="col-lg-4 panel">
-      <img class="card-preview" src="assets/webapp2.png" alt="">
 
-      <div class="buttons">
-        <button type="button" class="btn btn-left btn-secondary btn-sm">See Demo</button>
-        <button type="button" class="btn btn-right btn-secondary btn-sm">See Github</button>
-      </div>
-    </div>
+    <!-- Dinamic generated content START -->
+    <?php foreach($posts as $post){ ?>
+      <div class="col-lg-12 panel">
 
-    <div class="col-lg-4 panel">
-      <img class="card-preview" src="assets/webapp.jpg" alt="">
+        <!-- Generate the container and image for each post -->
+        <div id="img<?php echo $post['post_id'] ?>" class="imgcontainer">
+          <div id="info<?php echo $post['post_id'] ?>" class="cardinfo">
+            <h3><?php echo $post['post_title'] ?></h3><br>
+            <p><?php echo $post['post_content'] ?></p>
+          </div>
+          <img id="card<?php echo $post['post_id'] ?>" class="cardpreview" src="<?php echo $post['post_thumb'] ?>">
+        </div>
 
-      <div class="buttons">
-        <button type="button" class="btn btn-left btn-secondary btn-sm">See Demo</button>
-        <button type="button" class="btn btn-right btn-secondary btn-sm">See Github</button>
-      </div>
-    </div>
+        <!-- Generate the buttons to access the content outside -->
+        <div class="buttons">
 
-    <div class="col-lg-4 panel">
-      <img class="card-preview" src="assets/webapp3.png" alt="">
+          <!-- Get the link for demo page in DB and associate it with the left button-->
+          <form action="<?php echo $post['link_demo'] ?>" method="get" target="_blank" >
+            <button type="submit" class="btn btn-left btn-secondary btn-sm">
+              <span class="linkbutton">See Demo</span>
+            </button>
+          </form>
 
-      <div class="buttons">
-        <button type="button" class="btn btn-left btn-secondary btn-sm">See Demo</button>
-        <button type="button" class="btn btn-right btn-secondary btn-sm">See Github</button>
-      </div>
-    </div>
+          <!-- Get the link for GITHUB page in DB and associate it with the right button -->
+          <form action="<?php echo $post['link_git'] ?>" method="get" target="_blank" >
+            <button type="submit" class="btn btn-right btn-secondary btn-sm">
+              <span class="linkbutton">See Github</span>
+            </button>
+          </form>
 
-  </div>
-</div>
+        </div><!-- Button div END -->
+      </div><!-- Container div END -->
+    <?php } ?>
 
 
-<!-- ===== SCRIPTS ===== -->
+  </div><!-- Content container div END -->
+</div><!-- Main container div END -->
 
+
+</div><!-- Wrapper END -->
+
+<!-- ========================= -->
+<!-- ======== Scripts ======== -->
+<!-- ========================= -->
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/scripts.js"></script>
 </body>
