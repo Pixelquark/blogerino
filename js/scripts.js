@@ -27,20 +27,28 @@ for (var i = 0; i < idImg.length; i++) {
 }
 //The function replaces X with the parameter acquired above when it's called
 function hoverEffect(x){
+  let info  = $('#'+idInfo[x]);
+  let card  = $('#'+idCard[x]);
   //Since the function generatedID includes the ID as a string, i just concatenate the ID with the selector
   //I do this for every ID handled in this function
   $('#'+idImg[x]).on({
     //stuff to do on mouse enter
       mouseenter: function () {
-          $('#'+idCard[x]).hide(1);
-          $('#'+idInfo[x]).fadeIn(100);
+          $('#'+idCard[x]).fadeOut(300);
+          $('#'+idInfo[x]).delay(300).fadeIn(200);
       },
       //stuff to do on mouse leave
       mouseleave: function () {
-          $('#'+idInfo[x]).hide(1);
-          $('#'+idCard[x]).fadeIn(100);
+          if($(info).is(':visible') && !$(card).is(':visible')){
+            info.hide(0);
+            card.delay(300).fadeIn(500);
+          };
+
       }
   });
+  // if ($(id).is('visible') && ) {
+  //
+  // }
 }
 //==============================================================================
 //Function to generate unique IDs to the card elements in HTML
