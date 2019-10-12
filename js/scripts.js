@@ -25,31 +25,44 @@ for (var i = 0; i < idImg.length; i++) {
   //Calls the function for every "iteration as ID" in the container array
   hoverEffect(i);
 }
+
+
+
+
 //The function replaces X with the parameter acquired above when it's called
 function hoverEffect(x){
   let info  = $('#'+idInfo[x]);
   let card  = $('#'+idCard[x]);
+  let img = $('#'+idImg[x]);
   //Since the function generatedID includes the ID as a string, i just concatenate the ID with the selector
   //I do this for every ID handled in this function
-  $('#'+idImg[x]).on({
+  img.on({
     //stuff to do on mouse enter
       mouseenter: function () {
-          $('#'+idCard[x]).fadeOut(300);
-          $('#'+idInfo[x]).delay(300).fadeIn(200);
+          card.delay(100).fadeOut(150);
+          info.delay(250).fadeIn(0);
       },
       //stuff to do on mouse leave
       mouseleave: function () {
-          if($(info).is(':visible') && !$(card).is(':visible')){
-            info.hide(0);
-            card.delay(300).fadeIn(500);
-          };
-
+          info.fadeOut(0);
+          card.fadeIn(150);
       }
   });
-  // if ($(id).is('visible') && ) {
-  //
-  // }
 }
+
+// // for (var i = 0; i < idImg.length; i++) {
+//   $('#img1').onmouseover = function(){mouseOver()};
+// // }
+//
+//
+//
+// function mouseOver(){
+//
+//   $(this).hide(50);
+//   // this.show(0);
+// }
+
+
 //==============================================================================
 //Function to generate unique IDs to the card elements in HTML
 //==============================================================================

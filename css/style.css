@@ -76,6 +76,8 @@ body, html {
  * ----------------------------------------------
  */
 .container {
+  display: flex;
+  flex-direction: column;
   padding: 2em 1em 2em 1em; }
 
 .header {
@@ -137,11 +139,22 @@ body, html {
 
 .header-content {
   color: #575757;
-  text-transform: uppercase;
   font-family: 'Roboto Mono', monospace;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center; }
+
+.headerUsername {
+  text-transform: none;
+  color: #B40E0E; }
+
+.headerFullname {
+  text-transform: none; }
+
+.headerLogged {
+  text-transform: none; }
 
 .panel-container {
   justify-content: center; }
@@ -222,5 +235,36 @@ body, html {
 .wrapper {
   display: flex;
   flex-direction: column; }
+
+input[type=text], input[type=password], textarea {
+  padding: 5px;
+  margin-bottom: .5em;
+  border: 1px solid #CCC; }
+
+input[type=text]:focus, input[type=password]:focus, textarea:focus {
+  outline: none; }
+
+input[type=submit] {
+  width: 100%;
+  margin-top: 1em; }
+
+.formLogin {
+  background-color: white;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  border-color: #575757; }
+
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
+.loginContainer > small {
+  margin-bottom: 1em; }
+
+.adminContainer {
+  display: flex; }
 
 /*# sourceMappingURL=style.css.map */
