@@ -50,16 +50,13 @@ if (isset($_SESSION['logged_in'])){
 
         <!-- == Links == -->
         <ul id="navmenu">
-          <li><a href="">New post</a></li>
-          <li><a href="">Remove post</a></li>
-          <li><a href="">Edit posts</a></li>
-          <li><a href="">Database</a></li>
+          <li><a href="../index.php">Home</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
 
         <!-- Menu hamburguer -->
         <ul>
           <li><img id="menu" src="../assets/menu.png" alt=""></li>
-          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
     </div>
@@ -85,15 +82,19 @@ if (isset($_SESSION['logged_in'])){
       <!-- == Content Main == -->
       <div class="row adminContainer">
 
-        
-
+        <div class="col-lg-12 navigationPanel">
+          <button type="button" name="button">Add post</button>
+          <button type="button" name="button">Remove post</button>
+          <button type="button" name="button">Edit post</button>
+          <button type="button" name="button">Register new user</button>
+          <button type="button" name="button">Database Control</button>
+        </div>
 
       </div><!-- Content container div END -->
     </div><!-- Main container div END -->
 
 
   </div><!-- Wrapper END -->
-
   <!-- ========================= -->
   <!-- ======== Scripts ======== -->
   <!-- ========================= -->
@@ -178,7 +179,7 @@ if (isset($_SESSION['logged_in'])){
 
           <!-- == Links == -->
           <ul id="navmenu">
-            <li><a href="../index.php">Webapps</a></li>
+            <li><a href="../index.php">Home</a></li>
             <li><a href="https://github.com/Pixelquark">Github</a></li>
           </ul>
 
@@ -212,9 +213,9 @@ if (isset($_SESSION['logged_in'])){
             ?>
 
           <form class="formLogin" action="index.php" method="post" autocomplete="off">
-            <input type="text" name="username" autocomplete="off" placeholder="Username"/> <br>
-            <input type="password" name="password" autocomplete="off" placeholder="Password"/><br>
-            <input type="submit" value="Login"/>
+            <input class="inputAdmin" type="text" name="username" autocomplete="off" placeholder="Username"/> <br>
+            <input class="inputAdmin" type="password" name="password" autocomplete="off" placeholder="Password"/><br>
+            <input class="inputAdmin" type="submit" value="Login"/>
           </form>
 
 

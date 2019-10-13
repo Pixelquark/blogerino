@@ -4,7 +4,7 @@ require __DIR__.'/includes/connection.php';
 
 $post = new Post;
 $posts = $post->fetch_all();
-
+session_start();
 
 ?>
 <!DOCTYPE html>
@@ -48,7 +48,9 @@ $posts = $post->fetch_all();
 
     <!-- == Links == -->
     <ul id="navmenu">
-      <li><a href="">Webapps</a></li>
+      <li><a href="admin/index.php">
+        <?php if (isset($_SESSION['logged_in'])){ ?> Panel <?php } else { ?> Login <?php } ?>
+      </a></li>
       <li><a href="https://github.com/Pixelquark">Github</a></li>
     </ul>
 
@@ -82,11 +84,21 @@ $posts = $post->fetch_all();
     <?php foreach($posts as $post){ ?>
       <div class="col-lg-12 panel">
 
-        <!-- Generate the container and image for each post -->
+        <!-- Generate the container, info and image for each post -->
         <div id="img<?php echo $post['post_id'] ?>" class="imgcontainer">
           <div id="info<?php echo $post['post_id'] ?>" class="cardinfo">
-            <h3><?php echo $post['post_title'] ?></h3><br>
-            <p><?php echo $post['post_content'] ?></p>
+            <div class="cardTitle-div">
+              <small><?php echo date('F, Y', $post['post_date']) ?></small>
+              <h3><?php echo $post['post_title'] ?></h3>
+            </div>
+            <div class="cardContent-div">
+              <p><?php echo $post['post_content'] ?></p>
+            </div>
+            <div class="cardTags-div">
+              <button type="button" class="btn btn-outline-primary btn-sm">HTML</button>
+              <button type="button" class="btn btn-outline-warning btn-sm">CSS</button>
+              <button type="button" class="btn btn-outline-info btn-sm">JavaScript</button>
+            </div>
           </div>
           <img id="card<?php echo $post['post_id'] ?>" class="cardpreview" src="<?php echo $post['post_thumb'] ?>">
         </div>
@@ -95,15 +107,15 @@ $posts = $post->fetch_all();
         <div class="buttons">
 
           <!-- Get the link for demo page in DB and associate it with the left button-->
-          <form action="<?php echo $post['link_demo'] ?>" method="get" target="_blank" >
-            <button type="submit" class="btn btn-left btn-secondary btn-sm">
+          <form id="leftForm" action="<?php echo $post['link_demo'] ?>" method="get" target="_blank" >
+            <button type="submit" class="btn1 btn-left btn-secondary btn-sm">
               <span class="linkbutton">See Demo</span>
             </button>
           </form>
 
           <!-- Get the link for GITHUB page in DB and associate it with the right button -->
-          <form action="<?php echo $post['link_git'] ?>" method="get" target="_blank" >
-            <button type="submit" class="btn btn-right btn-secondary btn-sm">
+          <form id="rightForm" action="<?php echo $post['link_git'] ?>" method="get" target="_blank" >
+            <button type="submit" class="btn1 btn-right btn-secondary btn-sm">
               <span class="linkbutton">See Github</span>
             </button>
           </form>

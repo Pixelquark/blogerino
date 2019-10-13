@@ -230,28 +230,34 @@ body, html{
   border-radius: 6px;
   background-color: $bg-color;
 }
-.btn, form{
-  min-width: 174px;
+.btn1, form{
+  min-width: 171px;
   align-self: flex-end;
+
   background-color: $s-color;
   border-color: $s-color;
-  border-radius: 6px;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
-  border-bottom-right-radius: 6px;
-  border-bottom-left-radius: 6px;
+  border: 1px solid $s-color;
+  border-radius: 0px 0px 6px 6px;
   cursor:pointer;
 }
-.btn:focus, .btn:active, .btn:visited{
+.btn1:focus, .btn1:active, .btn1:visited{
   box-shadow: none;
+}
+#leftForm{
+  border-bottom-right-radius: 0px;
+  border-right: 2px solid $s-color;
 }
 .btn-left{
   border-bottom-right-radius: 0px;
-  border-right: 1px solid $s-color;
+  border-right: 2px solid $s-color;
+}
+#rightForm{
+  border-bottom-left-radius: 0px;
+  border-left: 2px solid $s-color;
 }
 .btn-right{
   border-bottom-left-radius: 0px;
-  border-left: 1px solid $s-color;
+  border-left: 2px solid $s-color;
 }
 
 .buttons{
@@ -267,10 +273,9 @@ body, html{
   }
 }
 .imgcontainer{
-  min-height: 350px;
+  min-height: 365px;
   min-width: 350px;
   display: flex;
-
 }
 
 .cardpreview{
@@ -290,15 +295,56 @@ body, html{
    color: $h-color;
 }
 .cardinfo{
-  min-height: 348px;
-  width: 348px;
+  min-height: 365px;
+  width: 350px;
 
   display: flex;
   flex-direction: column;
-  justify-content:center;
-  align-self: center;
+  justify-content:flex-start;
+
+}
+.cardTitle-div{
+  width: 348px;
+  height: auto;
+  padding: 1em 0 1em 0;
+  margin-bottom: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  background-color: #575757;
+  color: $h-color;
+  border: 1px solid $s-color;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.cardTitle-div>h3{
+  margin: 0;
+
+}
+.cardContent-div{
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+
+  padding: 0 1em .5em 1em;
 }
 
+.cardTags-div{
+  display: flex;
+  justify-content: space-around;
+  padding: 0 0 .5em 0;
+}
+
+.cardTags-div > .btn{
+  margin: 0 1em;
+}
+.cardTags-div> button[type="button"]{
+  min-width: 90px;
+}
 
 .wrapper{
   display: flex;
@@ -308,17 +354,19 @@ body, html{
 
 // Admin page
 
-input[type=text], input[type=password], textarea{
+ .inputAdmin{
   padding: 5px;
-  margin-bottom: .5em;
+  margin-bottom: 1em;
   border: 1px solid #CCC;
 }
 
-input[type=text]:focus, input[type=password]:focus, textarea:focus{
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="submit"]:focus{
   outline: none;
 }
 
-input[type=submit]{
+.formLogin> input[type=submit]{
   width: 100%;
   margin-top: 1em;
 }
@@ -327,8 +375,9 @@ input[type=submit]{
   justify-content: center;
   align-items: center;
   align-self: center;
-  border-color: $s-color;
+  border: none;
 
+  cursor: default;
 }
 .loginContainer{
   display: flex;
@@ -344,5 +393,13 @@ input[type=submit]{
 
 .adminContainer{
   display: flex;
-  
+
+}
+.navigationPanel{
+  display: flex;
+  justify-content: space-around;
+}
+
+.navigationPanel> button[type='button']{
+  width: 150px;
 }
