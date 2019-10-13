@@ -50,18 +50,6 @@ function hoverEffect(x){
   });
 }
 
-// // for (var i = 0; i < idImg.length; i++) {
-//   $('#img1').onmouseover = function(){mouseOver()};
-// // }
-//
-//
-//
-// function mouseOver(){
-//
-//   $(this).hide(50);
-//   // this.show(0);
-// }
-
 
 //==============================================================================
 //Function to generate unique IDs to the card elements in HTML

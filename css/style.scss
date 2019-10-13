@@ -335,6 +335,8 @@ body, html{
 
 .cardTags-div{
   display: flex;
+  margin-top: auto;
+  align-self: flex-end;
   justify-content: space-around;
   padding: 0 0 .5em 0;
 }
@@ -393,13 +395,76 @@ input[type="submit"]:focus{
 
 .adminContainer{
   display: flex;
-
+  align-items: center;
 }
 .navigationPanel{
   display: flex;
   justify-content: space-around;
+  padding: 1em  0 1em 0;
+
+
 }
 
 .navigationPanel> button[type='button']{
   width: 150px;
+}
+
+.spanFormatting{
+
+}
+
+.addPost{
+  background-color: $bg-color;
+  border: 1px solid $h-color;
+  border-radius: 6px;
+
+  min-width: 15rem;
+  padding: 1rem;
+  margin: auto;
+
+  display:flex;
+  align-self: center;
+}
+.adminForm{
+  border: none;
+  border-radius: initial;
+  background-color: inherit;
+
+  // display: flex;
+  text-align: center;
+  align-self: flex-start;
+
+  cursor: default;
+}
+.adminForm>input[type='text'],
+.adminForm>input[type='file'],
+.adminForm>input[type='url'],
+.adminForm>textarea{
+    color: $s-color;
+    text-align: center;
+
+    margin: .3em;
+
+    resize: none;
+}
+.adminForm>input[type='text']:focus,
+.adminForm>input[type='file']:focus
+.adminForm>input[type='url']:focus,
+.adminForm>textarea:focus{
+  outline: none;
+}
+.adminForm>input[type='file']{
+  margin: 0 auto 0 0;
+}
+.adminForm>input[type='url']{
+  width: 100%;
+  text-align: left;
+  padding-left: 1em;
+}
+.submitDiv{
+  display: flex;
+  margin: .3em;
+}
+.submitDiv>input[type='file']{
+  margin-left: auto;
 }

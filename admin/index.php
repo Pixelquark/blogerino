@@ -8,7 +8,13 @@ $user = new User;
 $users = $user->fetch_all();
 
 if (isset($_SESSION['logged_in'])){
-
+    if (!isset($_SESSION['CREATED'])) {
+      $_SESSION['CREATED'] = time();
+    } else if (time() - $_SESSION['CREATED'] > 1800) {
+        // session started more than 30 minutes ago
+        session_regenerate_id(true);    // change session ID for the current session and invalidate old session ID
+        $_SESSION['CREATED'] = time();  // update creation time
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,12 +89,34 @@ if (isset($_SESSION['logged_in'])){
       <div class="row adminContainer">
 
         <div class="col-lg-12 navigationPanel">
-          <button type="button" name="button">Add post</button>
-          <button type="button" name="button">Remove post</button>
-          <button type="button" name="button">Edit post</button>
-          <button type="button" name="button">Register new user</button>
-          <button type="button" name="button">Database Control</button>
+          <button id="addPost" type="button" name="button">Add post</button>
+          <button onclick="removePost()" type="button" name="button">Remove post</button>
+          <button onclick="editPost()" type="button" name="button">Edit post</button>
+          <button onclick="registerNew()" type="button" name="button">Register new user</button>
+          <button onclick="dbControl()" type="button" name="button">Database Control</button>
         </div>
+
+        <div class="addPost">
+          <form class="adminForm" action="index.html" method="post">
+            <input type="text" name="title" placeholder="Your post title" required>
+            <input type="text" name="username" value="<?php foreach ($users as $user){ echo $user['fullname']; }?>" readonly>
+            <input type="text" name="date" value="<?php echo date('F, Y') ?>" readonly><br>
+            <textarea name="name" rows="8" cols="69" placeholder="Your description for card" required></textarea><br>
+            <input type="url" name="linkdemo" placeholder="Paste the URL for the demo page" required><br>
+            <input type="url" name="linkgit" placeholder="Paste the URL for the GITHUB page" required><br>
+            <input type="checkbox" name="" value="HTML">HTML
+            <input type="checkbox" name="" value="CSS">CSS
+            <input type="checkbox" name="" value="JavaScript">JS
+            <input type="checkbox" name="" value="PHP">PHP
+            <input type="checkbox" name="" value="Python">Python
+            <input type="checkbox" name="" value="SQL">SQL
+            <div class="submitDiv">
+              <input type="submit" name="submit" value="Submit">
+              <input type="file" name="thumb">
+            </div>
+          </form>
+        </div>
+
 
       </div><!-- Content container div END -->
     </div><!-- Main container div END -->
@@ -112,24 +140,25 @@ if (isset($_SESSION['logged_in'])){
   //display login
   if(isset($_POST['username'], $_POST['password'])){
     $username = $_POST['username'];
-    $password = md5($_POST['password']);
+    $password = $_POST['password'];
+    $options = array('cost'=>11);
+    $hash = password_hash($password, PASSWORD_BCRYPT, $options);
 
     if(empty($username) or empty($password)){
       $error = 'All fields are required.';
     }else{
       $query = $pdo->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
       $query->bindValue(1, $username);
-      $query->bindValue(2, $password);
+      $query->bindValue(2, $hash);
       $query->execute();
 
       $num = $query->rowCount();
 
+      if(password_verify($password, $hash) && $num = 1){
+          $_SESSION['logged_in'] = true;
 
-      if($num == 1){
-        $_SESSION['logged_in'] = true;
-
-        header('Location: index.php');
-        exit();
+          header('Location: index.php');
+          exit();
       }else{
         $error = 'Incorrect details.';
       }
