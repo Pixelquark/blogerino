@@ -454,17 +454,18 @@ input[type="submit"]:focus{
   outline: none;
 }
 .adminForm>input[type='file']{
-  margin: 0 auto 0 0;
+  margin-left: auto;
 }
-.adminForm>input[type='url']{
-  width: 100%;
+.link{
+  width: 90%;
   text-align: left;
-  padding-left: 1em;
 }
 .submitDiv{
   display: flex;
   margin: .3em;
 }
-.submitDiv>input[type='file']{
+#filechooser{
+  text-align: center;
+
   margin-left: auto;
 }

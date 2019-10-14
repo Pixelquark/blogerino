@@ -1,72 +1,36 @@
 <?php
 session_start();
-include_once('../includes/connection.php');
+require '../includes/connection.php';
 
 if(isset($_SESSION['logged_in'])){
-  if(isset($_POST['title'], $_POST['content'])){
+
+  if (isset($_POST['title'], $_POST['description'], $_POST['uname'], $_POST['linkdemo'], $_POST['linkgit'], $_POST['thumb'])){
     $title = $_POST['title'];
-    $content = $_POST['content'];
-    if(empty($title) or empty($content)){
+    $description = $_POST['description'];
+    $username = $_POST['uname'];
+    $linkdemo = $_POST['linkdemo'];
+    $linkgit = $_POST['linkgit'];
+    $thumb = $_POST['thumb'];
+    if (empty($title) or empty($description) or empty($username) or empty($linkdemo) or empty($linkgit) or empty($thumb)){
       $error = 'All fields are required.';
     }else{
-      $query = $pdo->prepare("INSERT INTO articles(article_title, article_content, article_timestamp) VALUES(?, ?, ?)");
-      $query->bindValue(1,$_POST['title']);
-      $query->bindValue(2,nl2br($_POST['content']));
-      $query->bindValue(3, time());
+
+      // echo $_POST['description'];
+      $query = $pdo->prepare("INSERT INTO posts(post_date, post_title, post_content, post_author, post_thumb, link_demo, link_git) VALUES (?, ?, ?, ?, ?, ?, ?)");
+      $query->bindValue(1,time());
+      $query->bindValue(2,$_POST['title']);
+      $query->bindValue(3,nl2br($_POST['description']));
+      $query->bindValue(4,$_POST['uname']);
+      $query->bindValue(5,$_POST['thumb']);
+      $query->bindValue(6,$_POST['linkdemo']);
+      $query->bindValue(7,$_POST['linkgit']);
 
       $query->execute();
+      
       header('Location: index.php');
     }
+  }else{
+    $error = 'Not logged in';
   }
-  ?>
-
-  <html>
-  	<head>
-  		<title>CMS Tutorial</title>
-  		<link rel="stylesheet" href="../assets/style.css" />
-  	</head>
-  	<body>
-
-      <div class="navbar">
-        <nav>
-          <ul>
-            <li><a href="../index.php">Webapps</a></li>
-            <?php if(!isset($_SESSION['logged_in'])){?>
-              <li><a href="admin/index.php">Login</a></li>
-            <?php }else{ ?>
-              <li><a href="index.php">Control Panel</a></li>
-            <?php } ?>
-          </ul>
-        </nav>
-      </div>
-
-  		<div class="container">
-
-  			<a href="index.php" id="logo">CMS</a>
-        <br/><br/>
-
-        <h4>Add article</h4>
-        <?php
-          if(isset($error)){
-        ?>
-        <small style="color:#aa0000"> <?php echo $error; ?> </small>
-        <br/><br/>
-        <?php
-          }
-        ?>
-        <form action="add.php" method="post" autocomplete="off">
-          <input type="text" name="title" placeholder="Title"><br><br>
-          <textarea name="content" rows="15" cols="50" placeholder="Content"></textarea><br><br>
-          <input type="submit" name="submit" value="Add article">
-        </form>
-        <a href="index.php">&larr;  Back</a><br>
-  		</div>
-
-  	</body>
-  </html>
-
-<?php
-}else{
-  header('Location: index.php');
 }
 ?>
