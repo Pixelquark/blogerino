@@ -1,14 +1,29 @@
-// $(".addPost").hide();
+$(".addPost").hide();
+// $(".remPost").hide();
 
 $('#addPost').on('click', addPost);
+$('#remPost').on('click', remPost);
+
 
 function addPost(){
+  $(".remPost").hide();
   if($(".addPost").is(':visible')){
     $(".addPost").fadeOut(100);
   }else{
     $(".addPost").fadeIn(100);
   }
 }
+
+function remPost(){
+  $(".addPost").hide();
+  if($(".remPost").is(':visible')){
+    $(".remPost").fadeOut(100);
+  }else{
+    $(".remPost").fadeIn(100);
+  }
+}
+
+
 
 
 // function uploadFile() {

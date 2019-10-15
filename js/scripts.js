@@ -18,6 +18,8 @@ $('#menu').on('click', menuAni);
 var idImg = [];  //Array of image container IDs
 var idCard = []; //Array of image IDs
 var idInfo = []; //Array of info IDs
+
+
 generateID(); //Calling the function that sets the ID dinamically
 
 //Iterates the container array of IDs
@@ -71,8 +73,11 @@ function generateID(){
   //Get the attribute "id" from the images so that it can add the ID
   let idsInfo = $cardinfo.map(cardinfo => $(cardinfo).attr('id'));
 
+
+
   //Loop to .push the generated IDs into it's own array outside of the function scope
   for (let i = 0; i < idsCont.length; i++) {
+
     idImg.push(idsCont[i]);
     idCard.push(idsCard[i]);
     idInfo.push(idsInfo[i])

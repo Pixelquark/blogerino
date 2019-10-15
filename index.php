@@ -4,8 +4,7 @@ require __DIR__.'/includes/connection.php';
 
 $post = new Post;
 $posts = $post->fetch_all();
-session_start();
-
+session_start()
 ?>
 <!DOCTYPE html>
 <html lang="en">

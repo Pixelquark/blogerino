@@ -1,4 +1,4 @@
-// *{border: 1px solid red !important;}
+  // *{border: 1px solid red !important;}
 
 // font-family: 'Roboto', sans-serif;
 // font-family: 'Roboto Condensed', sans-serif;
@@ -409,10 +409,7 @@ input[type="submit"]:focus{
   width: 150px;
 }
 
-.spanFormatting{
-
-}
-
+//ADD POST
 .addPost{
   background-color: $bg-color;
   border: 1px solid $h-color;
@@ -438,34 +435,87 @@ input[type="submit"]:focus{
 }
 .adminForm>input[type='text'],
 .adminForm>input[type='file'],
-.adminForm>input[type='url'],
-.adminForm>textarea{
-    color: $s-color;
-    text-align: center;
-
-    margin: .3em;
-
-    resize: none;
+.adminForm>input[type='url']{
+  color: $s-color;
+  text-align:center;
+  margin: .3em;
 }
+.adminForm>textarea{
+  text-align:center;
+  resize: none;
+  width: 586px;
+}
+
+
 .adminForm>input[type='text']:focus,
 .adminForm>input[type='file']:focus
 .adminForm>input[type='url']:focus,
 .adminForm>textarea:focus{
   outline: none;
 }
-.adminForm>input[type='file']{
-  margin-left: auto;
-}
 .link{
-  width: 90%;
+  width: 586px;
   text-align: left;
+}
+.tags{
+  margin: .3em;
 }
 .submitDiv{
   display: flex;
   margin: .3em;
 }
+.imageAddress{
+  text-align: center;
+  line-height:30px;
+  margin-left: auto;
+}
+.addSubmitButton{
+  width: 150px;
+}
 #filechooser{
   text-align: center;
+  margin-left: .5em;
+}
 
-  margin-left: auto;
+//REMOVE POST
+.remPost{
+  background-color: $bg-color;
+  border: 1px solid $h-color;
+  border-radius: 6px;
+
+  min-width: 15rem;
+  padding: 1rem;
+  margin: auto;
+
+  display: block;
+  align-self: center;
+}
+.remForm{
+  border: none;
+  border-radius: initial;
+  background-color: inherit;
+  background-color: $bg-color;
+
+  display: flex;
+  text-align: center;
+  align-self: flex-start;
+
+  cursor: default;
+  padding: 0 1em 0 0;
+}
+.remForm>input[type='text']{
+  margin: .5em .1em;
+  text-align: center;
+}
+.postInfo{
+  display:flex;
+}
+.postID{
+  width: 30px;
+}
+
+.remSubmitButton{
+  height: 30px;
+  width: 100px;
+  align-self: center;
 }

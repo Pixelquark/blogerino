@@ -7,6 +7,9 @@ require '../includes/connection.php';
 $user = new User;
 $users = $user->fetch_all();
 
+$post = new Post;
+$posts = $post->fetch_all();
+
 if (isset($_SESSION['logged_in'])){
 ?>
 <!DOCTYPE html>
@@ -83,10 +86,10 @@ if (isset($_SESSION['logged_in'])){
 
         <div class="col-lg-12 navigationPanel">
           <button id="addPost" type="button" name="button">Add post</button>
-          <button onclick="removePost()" type="button" name="button">Remove post</button>
-          <button onclick="editPost()" type="button" name="button">Edit post</button>
-          <button onclick="registerNew()" type="button" name="button">Register new user</button>
-          <button onclick="dbControl()" type="button" name="button">Database Control</button>
+          <button id="remPost" type="button" name="button">Remove post</button>
+          <button type="button" name="button">Edit post</button>
+          <button type="button" name="button">Register new user</button>
+          <button type="button" name="button">Database Control</button>
         </div>
 
         <div class="addPost">
@@ -102,22 +105,39 @@ if (isset($_SESSION['logged_in'])){
             <input type="text" name="title" placeholder="Your post title"  autocomplete="off" >
             <input type="text" name="uname" value="<?php foreach ($users as $user){ echo $user['fullname']; }?>" readonly>
             <input type="text" name="date" value="<?php echo date('F, Y') ?>" readonly><br>
-            <textarea name="description" rows="8" cols="69" placeholder="Your description for card" ></textarea><br>
-            <input class="link" type="text" name="linkdemo" placeholder="URL for the demo page" ><br>
-            <input class="link" type="text" name="linkgit" placeholder="URL for the GITHUB page" ><br>
+            <textarea name="description" maxlength="255" rows="8" cols="60" placeholder="Your description for card" ></textarea><br>
+            <input class="link" type="text" name="linkdemo" placeholder="Paste the full URL for the demo page"><br>
+            <input class="link" type="text" name="linkgit" placeholder="Paste the full URL for the GITHUB page"><br>
+            <input type="checkbox" name="" value="HTML"><span class="tags">HTML</span>
+            <input type="checkbox" name="" value="CSS"><span class="tags">CSS</span>
+            <input type="checkbox" name="" value="JavaScript"><span class="tags">JS</span>
+            <input type="checkbox" name="" value="PHP"><span class="tags">PHP</span>
+            <input type="checkbox" name="" value="Python"><span class="tags">Python</span>
+            <input type="checkbox" name="" value="SQL"><span class="tags">SQL</span>
             <div class="submitDiv">
-              <input type="submit" name="submit" value="Submit">
-              <input id="filechooser" type="text" name="thumb" placeholder="assets/nomedaimagem" >
+              <input class="addSubmitButton" type="submit" name="submit" value="Submit">
+              <span class="imageAddress">Image adress: </span> <input id="filechooser" type="text" name="thumb" placeholder="assets/nomedaimagem" >
             </div>
           </form>
         </div>
 
-        <!-- <input type="checkbox" name="" value="HTML">HTML
-        <input type="checkbox" name="" value="CSS">CSS
-        <input type="checkbox" name="" value="JavaScript">JS
-        <input type="checkbox" name="" value="PHP">PHP
-        <input type="checkbox" name="" value="Python">Python
-        <input type="checkbox" name="" value="SQL">SQL -->
+        <div class="remPost">
+          <?php foreach ($posts as $post) { ?>
+
+          <div class="postInfo">
+            <form class="remForm" action="delete.php" method="post" autocomplete="off" >
+              <input class="postID" type="text" name="id" value="<?php echo $post['post_id'] ?>" readonly>
+              <input type="text" name="title" value="<?php echo $post['post_title'] ?>" readonly>
+              <input type="text" name="author" value="<?php echo $post['post_author'] ?>" readonly>
+            </form>
+            <button class="remSubmitButton" type="button" name="button">Delete post</button>
+          </div>
+
+
+
+          <?php } ?>
+        </div>
+
 
       </div><!-- Content container div END -->
     </div><!-- Main container div END -->
