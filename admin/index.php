@@ -126,11 +126,11 @@ if (isset($_SESSION['logged_in'])){
 
           <div class="postInfo">
             <form class="remForm" action="delete.php" method="post" autocomplete="off" >
-              <input class="postID" type="text" name="id" value="<?php echo $post['post_id'] ?>" readonly>
+              <input class="postID" type="text" name="idRem" value="<?php echo $post['post_id'] ?>" readonly>
               <input type="text" name="title" value="<?php echo $post['post_title'] ?>" readonly>
               <input type="text" name="author" value="<?php echo $post['post_author'] ?>" readonly>
+              <button class="remSubmitButton" type="submit" name="submitRem" value="Submit">Delete post</button>
             </form>
-            <button class="remSubmitButton" type="button" name="button">Delete post</button>
           </div>
 
 
@@ -162,8 +162,8 @@ if (isset($_SESSION['logged_in'])){
   if(isset($_POST['username'], $_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
-    $options = array('cost'=>11);
-    $hash = password_hash($password, PASSWORD_BCRYPT, $options);
+
+    $hash = password_hash($password, PASSWORD_BCRYPT);
 
     if(empty($username) or empty($password)){
           $error = 'All fields are required.';
@@ -173,13 +173,11 @@ if (isset($_SESSION['logged_in'])){
           $query->bindValue(2, $hash);
           $query->execute();
 
-          $num = $query->rowCount();
+          if(password_verify($password, $users[0]['password']) && $username == $users[0]['username']){
+            $_SESSION['logged_in'] = true;
 
-          if(password_verify($password, $hash) && $num = 1){
-              $_SESSION['logged_in'] = true;
-
-              header('Location: index.php');
-              exit();
+            header('Location: index.php');
+            exit();
           }else{
                 $error = 'Incorrect details.';
                }

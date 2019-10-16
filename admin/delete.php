@@ -1,27 +1,19 @@
 <?php
 session_start();
-include_once('../includes/connection.php');
-include_once('../includes/article.php');
-
-$article = new Article;
+require '../includes/connection.php';
 
 if(isset($_SESSION['logged_in'])){
-  if(isset($_GET['id'])){
-    $id = $_GET['id'];
+    if(isset($_POST['idRem'])){
+      $id = $_POST['idRem'];
 
-    $query = $pdo->prepare("DELETE FROM articles WHERE article_id = ?");
-    $query->bindValue(1, $id);
-    $query->execute();
+      $query = $pdo->prepare("DELETE FROM posts WHERE post_id = ?");
+      $query->bindValue(1, $id);
+      $query->execute();
 
-    header('Location: delete.php');
+      header('Location: index.php');
+    }
+  else{
+    header('Location: index.php');
   }
-  $articles = $article->fetch_all();
-
-}else{
-  header('Location: index.php');
 }
-
 ?>
-
-
-DELETE FROM `posts` WHERE `posts`.`post_id` = 4
